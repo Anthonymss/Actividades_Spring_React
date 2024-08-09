@@ -39,9 +39,27 @@ footer{
         color: aqua;
     }
     50% {
-        color: rgb(255, 11, 11);
+        color: rgb(236, 202, 6);
+    }
+    75% {
+        color: rgb(28, 100, 255);
     }
     100% {
-        color: rgb(82, 10, 248);
+        color: aqua
+    }
+}
+@media only screen and (max-width:412px) {
+
+    .footer-list{
+        padding: 10px;
+        margin: 0 10px;
+    }
+    .footer-list li{
+        margin-bottom: 10px;
+        font-size: 14px;
+    }
+
+    .footer-autor{
+        font-size: 15px;
     }
 }

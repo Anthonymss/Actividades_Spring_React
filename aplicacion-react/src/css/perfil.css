@@ -65,3 +65,39 @@
     box-shadow: inset 0 30px 40px 10px rgba(15, 15, 15, 0.8)
 
 }
+@media only screen and (max-width:412px) {
+    .profile{
+        padding: 50px;
+    }
+    .profile-imagen{
+        width: 200px;
+        height:200px; 
+        margin-bottom: 20px;
+    }
+    .profile-username{
+        font-size: 17px;
+    }
+    .profile-name{
+        font-size: 20px;
+        max-width: 400px;
+        margin-bottom: 30px;
+    }
+    
+    .profile-puntos .profile-puntosT{
+        font-size: 80px;
+        margin-top: -20px;
+        
+    }
+    .profile-puntos{
+        text-align: center;
+        font-size: 17px;
+    }
+    .profile-Principal{
+        top: 0px;
+        width: 100%;
+    }
+    .xdxd{
+        height: 100vh;  
+        width: 0vh;    
+    }
+}
