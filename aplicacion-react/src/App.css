@@ -212,8 +212,8 @@
   .container {
     width: 100%;
     min-height: 50vh;
-    margin-top: 10ch;
-    margin-bottom: 15vh;
+    margin-top: 15ch;
+    margin-bottom: 9vh;
     border-radius: 20px;
     text-align: center;
   }
@@ -265,4 +265,8 @@
     font-size: 15px;
     font-weight: bolder;
   }
+  .form-container form input{
+    margin:0 0 7px 5px;
+  }
+  
 }
