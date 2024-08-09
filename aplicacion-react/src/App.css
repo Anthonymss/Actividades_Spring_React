@@ -211,9 +211,9 @@
 @media only screen and (max-width: 412px) {
   .container {
     width: 100%;
-    min-height: 45vh;
+    min-height: 50vh;
     margin-top: 10ch;
-    margin-bottom: 30ch;
+    margin-bottom: 15vh;
     border-radius: 20px;
     text-align: center;
   }
