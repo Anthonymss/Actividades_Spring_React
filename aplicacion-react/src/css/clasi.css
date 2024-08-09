@@ -1,0 +1,73 @@
+@import url('https://fonts.googleapis.com/css2?family=Anta&family=Bungee+Shade&family=Indie+Flower&family=Permanent+Marker&family=Silkscreen:wght@400;700&display=swap');
+
+.Clasi-General{
+    display: grid;
+    place-content: center;
+   height: 71.5vh;
+}
+.Clasi-General h1{
+    font-family: "Permanent Marker", cursive;
+    text-align: center;
+    text-transform: uppercase;
+}
+.Clasi-table {
+    width: 100vh;
+    border-collapse: collapse;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #ffffff;
+    color: #333;
+    border: 1px solid #ffffff;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.Clasi-table thead {
+    font-family: "Anta", sans-serif;
+    background-color: #343a40;
+    color: #ffffff;
+}
+.Clasi-table thead tr th{
+    text-align: center;
+}
+.Clasi-table th {
+    padding: 12px 15px;
+    text-align: left;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.Clasi-table td {
+    text-align: center;
+    font-family: "Anta", sans-serif;
+    padding: 10px 15px;
+    border-bottom: 1px solid #e0e8e942;
+}
+
+.Clasi-table tr:hover {
+    background-color: #15a2b49d;
+}
+.Clasi-table td:hover {
+    background-color: #15a1b4d2;
+}
+.Clasi-table .first-place {
+    background-color: #ffe139; 
+    color: #000000;
+    font-weight: bold;
+}
+
+.Clasi-table .puntos-cell {
+    color: #132af7b2; 
+    font-weight: bold;
+}
+
+.Clasi-table .orden-cell {
+    color: #1e5f99; 
+}
+
+.Clasi-table th, .Clasi-table td {
+    border-left: 1px solid #eeecec;
+}
+
+.Clasi-table th:first-child, .Clasi-table td:first-child {
+    border-left: none;
+}

@@ -1,0 +1,67 @@
+@import url('https://fonts.googleapis.com/css2?family=Anta&family=Bungee+Shade&family=Indie+Flower&family=Permanent+Marker&family=Silkscreen:wght@400;700&display=swap');
+.profile{
+    align-items: center;
+    justify-items: center;
+    display: flex;
+    flex-direction: column;
+    padding: 50px;
+    font-family: "Anta", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    color: rgb(131, 131, 131);
+    font-size: 30px;
+    
+    
+}
+.profile-imagen{
+    width: 350px;
+    height:350px; 
+    border-radius: 50%;
+    overflow: hidden; 
+    border: 6px solid hsla(0, 0%, 100%, 0.575); 
+    box-shadow: 0 0 10px rgba(248, 94, 94, 0.3);
+    z-index: -1;
+}
+.profile-imagen img{
+    width: 100%;
+    height: auto;
+    display: block;
+    
+}
+.profile-name{
+    font-weight: 800;
+    font-style: normal;
+    text-align: center;
+    max-width: 400px;
+}
+
+.profile-puntos .profile-puntosT{
+    font-family: "Permanent Marker", cursive;
+    font-size: 100px;
+    margin-top: -20px;
+    color: black;
+    text-align: center;;
+}
+.profile-username-u{
+    font-family: "Permanent Marker", cursive;
+    font-weight: 400;
+    font-style: normal;
+    color: rgb(0, 0, 0)
+}
+.profile-Principal{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    position: relative;
+    justify-content: space-around;
+    top: 40px;
+    z-index: -1;
+}
+.xdxd{
+    height: 100vh;  
+    width: 77vh;
+    background-color: rgba(219, 197, 197, 0.144);
+    z-index: -1;
+    box-shadow: inset 0 30px 40px 10px rgba(15, 15, 15, 0.8)
+
+}

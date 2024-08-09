@@ -1,0 +1,47 @@
+
+footer{
+    width: 100%;
+    background-color: black;
+    color:white;
+    position: relative;
+}
+.footer-list{
+    display: grid;
+    place-content: center;
+    text-align: center;
+    padding: 20px;
+    margin: 0 20px;
+}
+.footer-list li{
+    font-family: "Anta", cursive;
+    text-decoration: none;
+    list-style: none;
+    color: rgb(227, 232, 236);
+    margin-bottom: 10px;
+}
+
+.footer-react{
+    color: aqua;
+}
+.footer-spring{
+    color: rgb(55, 199, 42);
+}
+.footer-autor{
+    color: rgb(8, 238, 207);
+    text-decoration: none;
+    transition: color 0.3s ease;
+    animation: cambioColor 5s infinite;
+    font-size: 20px;
+}
+
+@keyframes cambioColor {
+    0% {
+        color: aqua;
+    }
+    50% {
+        color: rgb(255, 11, 11);
+    }
+    100% {
+        color: rgb(82, 10, 248);
+    }
+}
