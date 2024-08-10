@@ -12,4 +12,5 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
     setInterval(keepSessionAlive, 300000);
-  });
+  }
+);

@@ -20,7 +20,6 @@ const Perfil = () => {
                 <p>Puntos:</p>
                 <p className='profile-puntosT'>{puntos}</p>
             </div>
-        
         </div>
         <div className="xdxd"></div>
     </div>
