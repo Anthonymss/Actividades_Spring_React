@@ -16,6 +16,16 @@ const Clasi = () => {
         fetchUsuarios();
     }, []);
 
+      useEffect(() => {
+        const footerElement = document.querySelector('footer');
+        if (footerElement) {
+          if (usuarios.length<6) {
+            footerElement.style.marginTop = '17vh';
+          } else {
+            footerElement.style.marginTop = '0'; 
+          }
+        }
+      }, [usuarios]);
     return (
         <div className='Clasi-General'>
             <h1>Clasificación 😎🐰⏫</h1>

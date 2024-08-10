@@ -71,3 +71,29 @@
 .Clasi-table th:first-child, .Clasi-table td:first-child {
     border-left: none;
 }
+
+@media only screen and (max-width: 412px) {
+    .Clasi-General{
+        width: 100vw;
+    }
+    .Clasi-General h1 {
+        font-size: 20px;
+        margin-bottom: 15px;
+    }
+
+    .Clasi-table th, .Clasi-table td {
+        padding: 8px 5px;
+        font-size: 12px;
+    }
+
+    .Clasi-table thead tr th {
+        font-size: 12px;
+    }
+
+    .Clasi-General {
+        padding: 10px;
+    }
+    .Clasi-table{
+        width: 100vw;
+    }
+}

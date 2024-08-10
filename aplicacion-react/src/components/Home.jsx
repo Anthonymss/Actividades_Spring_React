@@ -35,7 +35,16 @@ const Home = () => {
   useEffect(() => {
     recuperarActividades();
   }, [recuperarActividades]);
-
+  useEffect(() => {
+    const footerElement = document.querySelector('footer');
+    if (footerElement) {
+      if (lista.length<6) {
+        footerElement.style.marginTop = '17vh';
+      } else {
+        footerElement.style.marginTop = '0'; 
+      }
+    }
+  }, [lista]);
   const generacionActividades = async () => {
     try {
       const response = await ActividadesService.generarActividad(id);
