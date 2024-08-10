@@ -7,6 +7,7 @@ import Login from './components/Login'
 import Clasi from './components/Clasi'
 import Perfil from './components/Perfil'
 import Footer from './components/Footer'
+import Confi from './components/Confi'
 function App() {
 
   return (
@@ -21,17 +22,10 @@ function App() {
               <Route exact path="/home" element={<Home/>}></Route>
               <Route exact path="/clasi" element={<Clasi/>}></Route>
               <Route exact path="/perfil" element={<Perfil/>}></Route>
-             {
-              
-              /*<Route exact path="/clientes" element={<ListClientesComponent/>}></Route>
-              <Route exact path="/add-cliente" element={<AddClienteComponent/>}></Route>
-              <Route exact path="/edit-cliente/:id" element={<AddClienteComponent/>}></Route>
-             */}
-              
-
+              <Route exact path='/confi' element={<Confi/>}></Route>
             </Routes>
           </div>
-          <Footer/>
+          
         </BrowserRouter>
         
 
@@ -41,3 +35,8 @@ function App() {
 }
 
 export default App
+  /*<Route exact path="/clientes" element={<ListClientesComponent/>}></Route>
+  <Route exact path="/add-cliente" element={<AddClienteComponent/>}></Route>
+  <Route exact path="/edit-cliente/:id" element={<AddClienteComponent/>}></Route>
+ */
+ 

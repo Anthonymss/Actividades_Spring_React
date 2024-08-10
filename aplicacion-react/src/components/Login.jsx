@@ -45,7 +45,6 @@ const Login = () => {
         sessionStorage.setItem("apellido",response.data.apellido);
         sessionStorage.setItem("puntos",response.data.puntos);
         sessionStorage.setItem("image",response.data.image);
-        alert(sessionStorage.getItem("nombre"));
         navigate('/home');
       })
       .catch((error) => {
@@ -61,7 +60,6 @@ const Login = () => {
           <div className="social-icons">
             <a href="#" className="icon"><img className='social-icons-img' src="https://www.wallpaperflare.com/static/388/690/548/rabbit-ears-charming-little-wallpaper.jpg" alt="1" /></a>
             <a href="#" className="icon"><img className='social-icons-img' src="https://www.wallpaperflare.com/static/388/690/548/rabbit-ears-charming-little-wallpaper.jpg" alt="1" /></a>
-            <a href="#" className="icon"><img className='social-icons-img' src="https://www.tiendanimal.es/articulos/wp-content/uploads/2018/01/Fibra-en-la-alimentaci%C3%B3n-de-los-conejos.jpg" alt="1" /></a>
           </div>
           <span>Usa tu username y contraseña</span>
           <input

@@ -7,6 +7,10 @@ class ActividadesService{
     generarActividad(id){
         return axios.get(`${URL}/generar/${id}`);
     }
+
+    guardarActividad(actividad){
+        return axios.post(URL,actividad);
+    }
     //http://localhost:8080/api/v1/actividades/generar/1
 
 }

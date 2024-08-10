@@ -76,12 +76,16 @@ public class ActividadController {
 
     @PostMapping
     public ResponseEntity<ActividadDTO> guardarActividad(@RequestBody ActividadDTO  actividadDTO) {
-        Actividad actividad = Actividad.builder()
-                .nombre(actividadDTO.getNombre())
-                .id(actividadDTO.getId())
-                .categoria(actividadDTO.getCategoria())
-                .build();
-        actividadService.guardarActividad(actividad);
+        try {
+            Actividad actividad = Actividad.builder()
+                    .nombre(actividadDTO.getNombre())
+                    .categoria(actividadDTO.getCategoria())
+                    .build();
+            Actividad nuevaActividad= actividadService.guardarActividad(actividad);
+            actividadDTO.setId(nuevaActividad.getId());
+        }catch (Exception e) {
+            throw new IllegalStateException(e.getMessage());
+        }
         return new ResponseEntity<>(actividadDTO, HttpStatus.CREATED);
     }
 
