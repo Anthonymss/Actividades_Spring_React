@@ -1,6 +1,7 @@
 import axios from "axios";
-
-const URL="http://localhost:8080/api/v1/asignacion"
+const urlbaseLocal="http://localhost:8080/api/v1";
+const urlHosting="https://actividades-spring-react.onrender.com/";
+const URL=urlHosting+"/asignacion"
 class ActividadUsuarioService{
 
     listActivityById(id){
