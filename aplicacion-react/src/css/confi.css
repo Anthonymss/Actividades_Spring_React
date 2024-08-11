@@ -1,0 +1,43 @@
+.Confi{
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    margin-top: 8ch;;
+    margin-bottom: 4ch;
+    padding: 30px;
+    align-items: center;
+    justify-content: center;
+    font-family: "Permanent Marker",Helvetica,Arial;
+    font-size: 30px;
+}
+.Confi-form{
+    display: grid;
+    place-content: center;
+    padding: 30px;
+}
+.Confi-form button{
+    color: white;
+    background-color: rgb(77, 124, 255);
+    border: none;
+    padding: 5px;
+    font-size: 20px;
+    font-family: "Permanent Marker",arial;
+    border-radius: 10px;
+    transition: 0.3s ease-out;
+    margin-top: 10px;
+}
+.Confi-form button:hover{
+    color: white;
+    background-color: rgb(17, 80, 255);
+    transform: scale(1.1);
+    box-shadow: 1px 2px 10px rgb(77, 124, 255);
+}
+.Confi-form input{
+    width: 300px;
+    padding: 10px;
+    margin: 0 10px 20px 10px;
+    border: 1px thick solid;
+    font-size: 20px;
+    font-family: "Anta",Arial;
+    transition: 0.3s ease-out;
+}

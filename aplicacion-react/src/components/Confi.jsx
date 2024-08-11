@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import ActividadesService from '../service/ActividadesService';
-
+import "../css/confi.css"
 const Confi = () => {
     const username = sessionStorage.getItem('username');
     const [nameActiviconfi, setNameActiviconfi] = useState("");
@@ -26,9 +26,8 @@ const Confi = () => {
 
     return (
         <div className='Confi'>
-            <br/><br/><br/><br/><br/><br/><br/><br/>
             {username === "gian_anthony" ? <h1>Bienvenido</h1> : <h2>Acceso Restringido 🏴‍☠️🏴‍☠️🏴‍☠️</h2>}
-            <form onSubmit={saveActividad}>
+            <form  className='Confi-form' onSubmit={saveActividad}>
                 <label>
                     Nombre Actividad:
                     <input
