@@ -63,6 +63,10 @@ def extraer_acciones_texto():
         acciones = [translator.translate(accion, dest='en').text for accion in acciones]
 
     return jsonify({"acciones": acciones}), 200
+@app.route('/hola', methods=['GET'])
+def saludo():
+    return jsonify({"mensaje": "¡Hola, mundo!"})
+
 
 if __name__ == '__main__':
     app.run(port=5001)
