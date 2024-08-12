@@ -11,6 +11,6 @@ document.addEventListener('DOMContentLoaded', function() {
           console.error('Error keeping session alive:', error);
         });
     }
-    setInterval(keepSessionAlive, 300000);
+    setInterval(keepSessionAlive, 100000);
   }
 );
