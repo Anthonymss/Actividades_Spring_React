@@ -1,3 +1,4 @@
+/*
 document.addEventListener('DOMContentLoaded', function() {
     const keepAliveUrl = 'https://actividades-spring-react.onrender.com';
     function keepSessionAlive() {
@@ -14,3 +15,4 @@ document.addEventListener('DOMContentLoaded', function() {
     setInterval(keepSessionAlive, 100000);
   }
 );
+*/

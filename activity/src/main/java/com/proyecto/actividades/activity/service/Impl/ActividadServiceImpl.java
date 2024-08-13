@@ -54,4 +54,21 @@ public class ActividadServiceImpl implements ActividadService {
     public List<Actividad> buscarActividadesPorCategoria(String categoria) {
         return List.of();
     }
+
+    @Override
+    public String guardarListarActividades(List<Actividad> actividadList) {
+        if (actividadList == null || actividadList.isEmpty()) {
+            return "No hay actividades para guardar";
+        }
+
+        try {
+            actividadRepository.saveAll(actividadList);
+        } catch (Exception e) {
+            e.printStackTrace(); // Para obtener más información sobre la excepción
+            return "Error al guardar las actividades: " + e.getMessage();
+        }
+
+        return "Se han guardado y listado las actividades";
+    }
+
 }

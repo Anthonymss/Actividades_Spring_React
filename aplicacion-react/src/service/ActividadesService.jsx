@@ -11,6 +11,9 @@ class ActividadesService{
     guardarActividad(actividad){
         return axios.post(URL,actividad);
     }
+    guardarListaActividades(listaActividades){
+        return axios.post(`${URL}/saveAll`,listaActividades);
+    }
     //http://localhost:8080/api/v1/actividades/generar/1
 
 }

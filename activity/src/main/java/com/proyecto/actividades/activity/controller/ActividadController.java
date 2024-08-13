@@ -101,11 +101,32 @@ public class ActividadController {
         actividadService.eliminarActividad(id);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
+
+    @PostMapping("/saveAll")
+    public ResponseEntity<?> guardarListaActividades(@RequestBody List<ActividadDTO> actividadDTOList) {
+        String Mensaje = "Por definir";
+        try {
+            List<Actividad> actividadList = actividadDTOList.stream()
+                    .map(this::convertir)
+                    .collect(Collectors.toList());
+            Mensaje = actividadService.guardarListarActividades(actividadList);
+        } catch (Exception e) {
+            e.printStackTrace();
+            throw new IllegalStateException(e.getMessage());
+        }
+        return new ResponseEntity<>(Mensaje, HttpStatus.CREATED);
+    }
     private ActividadDTO convertir(Actividad actividad){
         return ActividadDTO.builder()
                 .id(actividad.getId())
                 .nombre(actividad.getNombre())
                 .categoria(actividad.getCategoria())
+                .build();
+    }
+    private Actividad convertir(ActividadDTO actividadDTO){
+        return Actividad.builder()
+                .nombre(actividadDTO.getNombre())
+                .categoria(actividadDTO.getCategoria())
                 .build();
     }
 }

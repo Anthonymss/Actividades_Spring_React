@@ -16,6 +16,6 @@ public interface ActividadService {
     public Actividad actualizarActividad(Long id, Actividad actividad);
     public String eliminarActividad(Long id);
     public List<Actividad> buscarActividadesPorCategoria(String categoria);
-
+    public String guardarListarActividades(List<Actividad> actividadList);
 
 }

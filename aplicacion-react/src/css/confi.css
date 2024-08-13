@@ -41,3 +41,78 @@
     font-family: "Anta",Arial;
     transition: 0.3s ease-out;
 }
+.Confi-py{
+    width:auto;
+    height:auto;
+    padding: 30px;
+    margin-top: 15px;
+    font-size: 15px;
+    text-align: center;
+    
+}
+.Confi-py #upload-form{
+    display: grid;
+    place-content: center;
+    padding: 20px;
+    gap: 20px;
+    
+}
+ .Confi-py #text-form {
+    display: grid;
+    place-content: center;
+    padding: 20px;
+    gap: 10px;
+}
+
+.Confi-lista{
+    text-align: center;
+    flex-direction: column;
+    display:flex;
+    align-items: center;
+    justify-content: center;;
+    padding: 10px;
+}
+
+.Confi-lista table {
+    background-color: rgb(32, 31, 31);
+    color: white;
+}
+.Confi-lista table tbody tr td button{
+    background-color: rgb(226, 95, 95);
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    border: none ;
+    color: white;
+    text-transform: uppercase;
+}
+
+.Confi-lista table tbody tr td button:hover{
+    background-color: rgb(255, 38, 0);
+}
+.Confi-btn-enviarLista{
+    color: white;
+    background-color: rgb(77, 124, 255);
+    border: none;
+    padding: 5px;
+    font-size: 20px;
+    font-family: "Permanent Marker",arial;
+    border-radius: 10px;
+    transition: 0.3s ease-out;
+    margin-top: 30px;
+    width: 70%;
+}
+.Confi-btn-enviarLista:hover{
+    color: white;
+    background-color: rgb(17, 80, 255);
+    transform: scale(1.05);
+    box-shadow: 1px 2px 10px rgb(77, 124, 255);
+    
+}
+@media only screen and (max-width:412px) {
+    .Confi{
+        width: 100%;
+        max-width: 412px;
+        overflow-x: hidden;
+    }
+}

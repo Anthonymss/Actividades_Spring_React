@@ -108,6 +108,7 @@ const Home = () => {
               <th>Nombre</th>
               <th>Categoria</th>
               <th>Fecha Vencimiento</th>
+              <th>Puntos</th>
               <th>Estado</th>
               <th>Acciones</th>
             </tr>
@@ -119,6 +120,7 @@ const Home = () => {
                 <td>{actividad.actividadNombre}</td>
                 <td>{actividad.categoria}</td>
                 <td>{formatDateTime(actividad.tiempoAsignado)}</td>
+                <td>{actividad.puntos}</td>
                 <td>{actividad.estado}</td>
                 <td>
                   {
