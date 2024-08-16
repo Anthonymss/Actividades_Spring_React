@@ -109,7 +109,7 @@ const Confi = () => {
             alert("Debes agregar alguna acción para poder guardar");
         }
     };
-
+    
     return (
         <div className='Confi'>
             {username === "gian_anthony" ? <h1>Bienvenido</h1> : <h2>Acceso Restringido 🏴‍☠️🏴‍☠️🏴‍☠️</h2>}

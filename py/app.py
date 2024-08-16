@@ -1,4 +1,5 @@
 from flask_cors import CORS
+
 from googletrans import Translator
 from flask import Flask, request, jsonify
 import fitz  # PyMuPDF
@@ -13,22 +14,13 @@ def extraer_acciones(texto):
     acciones = []
 
     for sent in doc.sents:
-        sujeto = None
         verbo = None
-        objeto = None
-
         for token in sent:
-            if token.dep_ in ("nsubj", "nsubj:pass", "csubj"):
-                sujeto = token.text
-            elif token.pos_ == "VERB":
+            if token.pos_ == "VERB":  
                 verbo = token.lemma_
-            elif token.dep_ in ("obj", "dobj", "pobj"):
-                objeto = token.text
-
-        # Construir la acción completa si se tienen los elementos necesarios
-        if verbo and (sujeto or objeto):
-            accion_completa = f"{sujeto if sujeto else ''} {verbo} {objeto if objeto else ''}".strip()
-            acciones.append(accion_completa)
+            elif token.dep_ in ("obj", "attr"):
+                if verbo:
+                    acciones.append(f"{verbo} {token.text}")
 
     return acciones
 
@@ -66,15 +58,15 @@ def extraer_acciones_texto():
     acciones = extraer_acciones(texto)
     
     # Traducir acciones si es necesario
-    if idioma_destino != 'es':
+    if idioma_destino == 'en':
         translator = Translator()
-        acciones = [translator.translate(accion, dest=idioma_destino).text for accion in acciones]
+        acciones = [translator.translate(accion, dest='en').text for accion in acciones]
 
     return jsonify({"acciones": acciones}), 200
-
 @app.route('/hola', methods=['GET'])
 def saludo():
     return jsonify({"mensaje": "¡Hola, mundo!"})
+
 
 if __name__ == '__main__':
     app.run(port=5001)
