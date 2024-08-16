@@ -8,22 +8,29 @@ app = Flask(__name__)
 CORS(app)
 nlp_es = spacy.load("es_core_news_sm")
 
-def extraer_actividades(texto):
+def extraer_acciones(texto):
     doc = nlp_es(texto)
-    actividades = []
+    acciones = []
 
     for sent in doc.sents:
-        actividad = None
-        for token in sent:
-            if token.pos_ in ("VERB", "NOUN", "ADV", "ADJ"):  
-                actividad = token.lemma_
-                # Reglas adicionales para identificar actividades
-                if token.dep_ in ("ROOT", "acl", "advcl", "relcl") and actividad:
-                    actividad_completa = " ".join([tok.text for tok in sent])
-                    actividades.append(actividad_completa)
-                    break
+        sujeto = None
+        verbo = None
+        objeto = None
 
-    return actividades
+        for token in sent:
+            if token.dep_ in ("nsubj", "nsubj:pass", "csubj"):
+                sujeto = token.text
+            elif token.pos_ == "VERB":
+                verbo = token.lemma_
+            elif token.dep_ in ("obj", "dobj", "pobj"):
+                objeto = token.text
+
+        # Construir la acción completa si se tienen los elementos necesarios
+        if verbo and (sujeto or objeto):
+            accion_completa = f"{sujeto if sujeto else ''} {verbo} {objeto if objeto else ''}".strip()
+            acciones.append(accion_completa)
+
+    return acciones
 
 def leer_pdf(file):
     pdf_texto = ""
@@ -32,7 +39,7 @@ def leer_pdf(file):
             pdf_texto += pagina.get_text()
     return pdf_texto
 
-@app.route('/extraer-actividades', methods=['POST'])
+@app.route('/extraer-acciones', methods=['POST'])
 def procesar_pdf():
     if 'file' not in request.files:
         return jsonify({"error": "No se ha enviado ningún archivo."}), 400
@@ -43,11 +50,11 @@ def procesar_pdf():
         return jsonify({"error": "No se seleccionó ningún archivo."}), 400
     
     texto = leer_pdf(archivo)
-    actividades = extraer_actividades(texto)
-    return jsonify(actividades)
+    acciones = extraer_acciones(texto)
+    return jsonify(acciones)
 
-@app.route('/extraer-actividades-texto', methods=['POST'])
-def extraer_actividades_texto():
+@app.route('/extraer-acciones-texto', methods=['POST'])
+def extraer_acciones_texto():
     data = request.json
     if 'texto' not in data:
         return jsonify({"error": "No se ha proporcionado texto."}), 400
@@ -55,15 +62,15 @@ def extraer_actividades_texto():
     texto = data['texto']
     idioma_destino = data.get('idioma', 'es')
 
-    # Extraer actividades del texto en el idioma original
-    actividades = extraer_actividades(texto)
+    # Extraer acciones del texto en el idioma original
+    acciones = extraer_acciones(texto)
     
-    # Traducir actividades si es necesario
+    # Traducir acciones si es necesario
     if idioma_destino != 'es':
         translator = Translator()
-        actividades = [translator.translate(actividad, dest=idioma_destino).text for actividad in actividades]
+        acciones = [translator.translate(accion, dest=idioma_destino).text for accion in acciones]
 
-    return jsonify({"actividades": actividades}), 200
+    return jsonify({"acciones": acciones}), 200
 
 @app.route('/hola', methods=['GET'])
 def saludo():

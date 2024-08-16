@@ -7,6 +7,7 @@ const Confi = () => {
     const [nameActiviconfi, setNameActiviconfi] = useState("");
     const [nameCateconfi, setNameCateconfi] = useState("");
     const [listaAccionesNueva, setListaAccionesNueva] = useState([]);
+    const [accionesSeleccionadas, setAccionesSeleccionadas] = useState([]);
 
     const saveActividad = (e) => {
         e.preventDefault();
@@ -26,29 +27,28 @@ const Confi = () => {
         }
     };
 
-    /*section python*/
     async function uploadPDF() {
         const fileInput = document.getElementById('file-input');
         const file = fileInput.files[0];
-    
+
         if (!file) {
             alert('Por favor, selecciona un archivo PDF.');
             return;
         }
-    
+
         const formData = new FormData();
         formData.append('file', file);
-    
+
         try {
             const response = await fetch('https://pyy-woxp.onrender.com/extraer-acciones', {
                 method: 'POST',
                 body: formData
             });
-    
+
             if (!response.ok) {
                 throw new Error('Error en la respuesta del servidor');
             }
-    
+
             const result = await response.json();
             setListaAccionesNueva(Array.isArray(result) ? result : []);
         } catch (error) {
@@ -56,7 +56,6 @@ const Confi = () => {
             alert('Ocurrió un error al procesar el PDF.');
         }
     }
-    
 
     async function sendText() {
         const textInput = document.getElementById('text-input').value;
@@ -88,31 +87,29 @@ const Confi = () => {
             alert('Ocurrió un error al procesar el texto.');
         }
     }
-    /*Fin Section python */
-    
-    const ListDeleteByIndex = (index) => {
-        setListaAccionesNueva((prevList) =>
-            prevList.filter((_, i) => i !== index)
-        );
-    };
-    /*Guardar lista*/
-    const guardarListaGenerada=()=>{
-        if(listaAccionesNueva.length>0){
-            const listaForApi=[];
-            listaAccionesNueva.forEach(element => {
-                listaForApi.push(
-                    {
-                        nombre:element,
-                        categoria: "?"
-                    }
-                )
-            });
 
-            ActividadesService.guardarListaActividades(listaForApi).then(response=>alert(response.data)).catch(e=>console.log(e));
-        }else{
-            alert("Debes generar alguna lista para poder guardar");
+    const agregarASeleccionadas = (index) => {
+        setAccionesSeleccionadas((prevList) => [
+            ...prevList,
+            listaAccionesNueva[index]
+        ]);
+    };
+
+    const guardarListaGenerada = () => {
+        if (accionesSeleccionadas.length > 0) {
+            const listaForApi = accionesSeleccionadas.map((element) => ({
+                nombre: element,
+                categoria: "?"
+            }));
+
+            ActividadesService.guardarListaActividades(listaForApi)
+                .then(response => alert(response.data))
+                .catch(e => console.log(e));
+        } else {
+            alert("Debes agregar alguna acción para poder guardar");
         }
-    }
+    };
+
     return (
         <div className='Confi'>
             {username === "gian_anthony" ? <h1>Bienvenido</h1> : <h2>Acceso Restringido 🏴‍☠️🏴‍☠️🏴‍☠️</h2>}
@@ -163,7 +160,7 @@ const Confi = () => {
                         <tr>
                             <th>Index</th>
                             <th>Activities</th>
-                            <th>Borrar</th>
+                            <th>Agregar</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -172,8 +169,8 @@ const Confi = () => {
                             <td>{index + 1}</td>
                             <td>{acti}</td>
                             <td>
-                                <button onClick={() => ListDeleteByIndex(index)}>
-                                    Delete
+                                <button onClick={() => agregarASeleccionadas(index)}>
+                                    Agregar
                                 </button>
                             </td>
                         </tr>
