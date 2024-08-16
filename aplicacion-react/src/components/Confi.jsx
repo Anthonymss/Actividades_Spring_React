@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import ActividadesService from '../service/ActividadesService';
 import "../css/confi.css"
 
@@ -88,11 +88,15 @@ const Confi = () => {
         }
     }
 
-    const agregarASeleccionadas = (index) => {
-        setAccionesSeleccionadas((prevList) => [
-            ...prevList,
-            listaAccionesNueva[index]
-        ]);
+    const toggleSeleccion = (index) => {
+        const accion = listaAccionesNueva[index];
+        setAccionesSeleccionadas((prevList) => {
+            if (prevList.includes(accion)) {
+                return prevList.filter(item => item !== accion);
+            } else {
+                return [...prevList, accion];
+            }
+        });
     };
 
     const guardarListaGenerada = () => {
@@ -109,7 +113,7 @@ const Confi = () => {
             alert("Debes agregar alguna acción para poder guardar");
         }
     };
-    
+
     return (
         <div className='Confi'>
             {username === "gian_anthony" ? <h1>Bienvenido</h1> : <h2>Acceso Restringido 🏴‍☠️🏴‍☠️🏴‍☠️</h2>}
@@ -140,7 +144,7 @@ const Confi = () => {
                 <h1>Enviar Archivo PDF</h1>
                 <form id="upload-form">
                     <input name='as' type="file" id="file-input" accept=".pdf" required/>
-                    <button type="button" onClick={uploadPDF} >Enviar PDF</button>
+                    <button type="button" onClick={uploadPDF}>Enviar PDF</button>
                 </form>
                 <h1>Enviar Texto</h1>
                 <form id="text-form">
@@ -160,7 +164,7 @@ const Confi = () => {
                         <tr>
                             <th>Index</th>
                             <th>Activities</th>
-                            <th>Agregar</th>
+                            <th>Acción</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -169,8 +173,11 @@ const Confi = () => {
                             <td>{index + 1}</td>
                             <td>{acti}</td>
                             <td>
-                                <button onClick={() => agregarASeleccionadas(index)}>
-                                    Agregar
+                                <button
+                                    onClick={() => toggleSeleccion(index)}
+                                    className={accionesSeleccionadas.includes(acti) ? 'btn-eliminar' : 'btn-agregar'}
+                                >
+                                    {accionesSeleccionadas.includes(acti) ? 'Eliminar' : 'Agregar'}
                                 </button>
                             </td>
                         </tr>

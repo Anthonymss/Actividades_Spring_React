@@ -15,12 +15,28 @@ def extraer_acciones(texto):
 
     for sent in doc.sents:
         verbo = None
+        accion = []
+
         for token in sent:
-            if token.pos_ == "VERB":  
+            # Detectar el verbo principal
+            if token.pos_ == "VERB":
                 verbo = token.lemma_
-            elif token.dep_ in ("obj", "attr"):
+
+            # Detectar objetos directos e indirectos
+            if token.dep_ in ("obj", "dobj", "iobj", "attr"):
                 if verbo:
-                    acciones.append(f"{verbo} {token.text}")
+                    # Añadir el verbo y el objeto a la acción
+                    accion.append(f"{verbo} {token.text}")
+
+            # Detectar adverbios o modificadores que podrían afectar el verbo
+            elif token.dep_ in ("advmod", "amod"):
+                if verbo and accion:
+                    # Añadir el modificador a la acción
+                    accion[-1] = f"{accion[-1]} {token.text}"
+
+        # Unir las partes de la acción y añadir a la lista
+        if accion:
+            acciones.append(" ".join(accion))
 
     return acciones
 
