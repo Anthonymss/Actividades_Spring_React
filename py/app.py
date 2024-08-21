@@ -18,23 +18,18 @@ def extraer_acciones(texto):
         accion = []
 
         for token in sent:
-            # Detectar el verbo principal
             if token.pos_ == "VERB":
                 verbo = token.lemma_
 
-            # Detectar objetos directos e indirectos
             if token.dep_ in ("obj", "dobj", "iobj", "attr"):
                 if verbo:
-                    # Añadir el verbo y el objeto a la acción
                     accion.append(f"{verbo} {token.text}")
 
-            # Detectar adverbios o modificadores que podrían afectar el verbo
             elif token.dep_ in ("advmod", "amod"):
                 if verbo and accion:
                     # Añadir el modificador a la acción
                     accion[-1] = f"{accion[-1]} {token.text}"
 
-        # Unir las partes de la acción y añadir a la lista
         if accion:
             acciones.append(" ".join(accion))
 
@@ -70,10 +65,8 @@ def extraer_acciones_texto():
     texto = data['texto']
     idioma_destino = data.get('idioma', 'es')
 
-    # Extraer acciones del texto en el idioma original
     acciones = extraer_acciones(texto)
     
-    # Traducir acciones si es necesario
     if idioma_destino == 'en':
         translator = Translator()
         acciones = [translator.translate(accion, dest='en').text for accion in acciones]
